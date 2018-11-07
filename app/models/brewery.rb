@@ -9,6 +9,7 @@
 #
 
 class Brewery < ApplicationRecord
+  include JsonObject
   has_many :beers
   scope :where_brewery_db_id, -> (id) {
     where("brewery_db_json ->> 'id' = ?", id)
