@@ -21,6 +21,14 @@ class Beer < ApplicationRecord
     where("brewery_db_json ->> 'id' = ?", id)
   }
 
+  scope :name_filter, -> (name_filter) {
+    where("brewery_db_json ->> :key ILIKE :value", key: "name", value: "%#{name_filter}%")
+  }
+
+  scope :sort_new, -> {
+    order("(brewery_db_json ->> 'update_date')::timestamptz DESC")
+  }
+
   def style
     self.brewery_style.name
   end
