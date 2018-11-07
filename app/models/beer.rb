@@ -26,7 +26,7 @@ class Beer < ApplicationRecord
   end
 
   def availability
-    self.brewery_availability.name
+    self.brewery_available&.name
   end
 
   def description
