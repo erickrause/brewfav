@@ -16,6 +16,8 @@
 class Beer < ApplicationRecord
   include JsonObject
   belongs_to :brewery
+  has_many :beer_users
+  has_many :users, through: :beer_users
 
   scope :where_brewery_db_id, -> (id) {
     where("brewery_db_json ->> 'id' = ?", id)

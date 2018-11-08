@@ -4,6 +4,7 @@ class BeersController < ApplicationController
   before_action :sort_new, only: [:index]
   before_action :limit, only: [:index]
 
+
   def index
     render json: @beers.all
   end

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_07_213415) do
+ActiveRecord::Schema.define(version: 2018_11_08_012006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beer_users", force: :cascade do |t|
+    t.bigint "beer_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["beer_id"], name: "index_beer_users_on_beer_id"
+    t.index ["user_id"], name: "index_beer_users_on_user_id"
+  end
 
   create_table "beers", force: :cascade do |t|
     t.jsonb "brewery_db_json"
@@ -25,6 +34,13 @@ ActiveRecord::Schema.define(version: 2018_11_07_213415) do
 
   create_table "breweries", force: :cascade do |t|
     t.jsonb "brewery_db_json"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
