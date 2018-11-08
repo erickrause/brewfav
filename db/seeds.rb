@@ -15,3 +15,5 @@ brewery_ids.each do |brewery_id|
     brewery_object.beers.create(brewery_db_json: beer)
   end
 end
+
+User.create(email: 'foo@test.com', password: 'yagni')
