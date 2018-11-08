@@ -18,3 +18,7 @@ Pass that in as a header to the favorites request
 curl -i --header 'Authorization: Bearer JWT_TOKEN' http://localhost:3000/favorites
 
 You can also POST to /favorites with a param {beer_id: 123} to add that beer to the user's favorites.
+
+
+app location
+https://brewfav.herokuapp.com/beers.json
